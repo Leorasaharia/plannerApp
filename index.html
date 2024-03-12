@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&amp;display=swap">
+  <link rel="stylesheet" href="style.css" />
+  <title>Calendar Planner</title>
+</head>
+<body>
+  <div class="vector-bg"></div>
+  <div class="container">
+    <div class="left">
+        <h3>With our calendar planner now you can plan your<br><span>Daily Tasks</span></h3>    
+         <div class="calendar">
+        <div class="month">
+          <i class="fas fa-angle-left prev"></i>
+          <div class="date">December 2015</div>
+          <i class="fas fa-angle-right next"></i>
+        </div>
+        <div class="weekdays">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+        <div class="days"></div>
+        <div class="goto-today">
+          <div class="goto">
+            <input type="text" placeholder="mm/yyyy" class="date-input" />
+            <button class="goto-btn">Go</button>
+          </div>
+          <button class="today-btn">Today</button>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="today-date">
+        <div class="event-day">Wed</div>
+        <div class="event-date">12th December 2022</div>
+      </div>
+      <div class="events"></div>
+      <div class="add-event-wrapper">
+        <div class="add-event-header">
+          <div class="title">Add Event</div>
+          <i class="fas fa-times close"></i>
+        </div>
+        <div class="add-event-body">
+          <div class="add-event-input">
+            <input type="text" placeholder="Event Name" class="event-name" />
+          </div>
+          <div class="add-event-input">
+            <input type="text" placeholder="Event Time From" class="event-time-from" />
+          </div>
+          <div class="add-event-input">
+            <input type="text" placeholder="Event Time To" class="event-time-to" />
+            <div class="add-event-input">
+              <input type="text" placeholder="Add tasks"class="tasks"/>
+            </div>
+              <ul id="taskList">
+              </ul>
+              <button id="addTaskBtn">Add Task</button>
+          </div>
+    <div class="voice-memo">
+      <h2>Voice Memos</h2>
+      <div class="voice-memo">
+        <button class="record-btn">Record</button>
+        <button class="stop-btn">Stop</button>
+        <button class="play-btn">Play</button>
+    </div>
+    <audio id="audio" controls></audio>
+    <script>
+        const recordBtn = document.querySelector(".record-btn");
+        const stopBtn = document.querySelector(".stop-btn");
+        const playBtn = document.querySelector(".play-btn");
+        const audio = document.getElementById("audio");
+        let chunks = [];
+        let mediaRecorder;
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(function(stream) {
+                mediaRecorder = new MediaRecorder(stream);
+
+                recordBtn.onclick = function() {
+                    mediaRecorder.start();
+                    console.log(mediaRecorder.state);
+                    console.log("recorder started");
+                }
+
+                stopBtn.onclick = function() {
+                    mediaRecorder.stop();
+                    console.log(mediaRecorder.state);
+                    console.log("recorder stopped");
+                }
+
+                mediaRecorder.ondataavailable = function(e) {
+                    chunks.push(e.data);
+                }
+
+                mediaRecorder.onstop = function(e) {
+                    const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                    chunks = [];
+                    const audioURL = URL.createObjectURL(blob);
+                    audio.src = audioURL;
+                }
+            })
+            .catch(function(err) {
+                console.log("The following error occurred: " + err);
+            });
+
+        playBtn.onclick = function() {
+            audio.play();
+        }
+    </script>
+          <div class="text" placeholder="daily journal" class="journalEntry">
+              <textarea id="journalEntry" placeholder="Write your thoughts here"></textarea>
+              <button id="saveJournalBtn">Save Journal Entry</button>
+          </div>
+        </div>
+        <div class="add-event-footer">
+          <button class="add-event-btn">Add Event</button>
+        </div>
+      </div>
+    </div>
+    <button class="add-event">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
