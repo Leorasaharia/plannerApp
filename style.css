@@ -52,8 +52,8 @@ body {
 }
 .container {
   position: relative;
-  width: 1500px;
-  height: 1200px;
+  width: 100%;
+  max-width: 1500px; /* Added max-width for larger screens */
   margin: 0 auto;
   padding: 10px;
   color: #aab6cc;
@@ -61,19 +61,16 @@ body {
   cursor: pointer;
   border-radius: 30px;
   background-color: #272a32;
-  font:@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  font-family: 'Inter', sans-serif; /* Updated font-family */
 }
 h3{
-  font-family: @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size:xx-large;
+  font-size: xx-large;
   padding-bottom: 1px;
-  padding-top::after;
-  font-display::shadow;
-  cursor:pointer;
-  transform: translateY(-50%);
-}
-h3.hover{
+  padding-top: 0; /* Fixed typo */
+  font-display: shadow; /* Fixed typo */
+  cursor: pointer;
   transform: translateY(-50%);
 }
 h3 span.stop-blinking {
@@ -104,7 +101,7 @@ h3 span.stop-blinking {
   color: #241d2a;
   border-radius: 5px;
   background-color:#7d7c9d;
-  font:@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  font-family: 'Inter', sans-serif; /* Added font-family */
 }
 
 .calendar::before,
@@ -134,7 +131,6 @@ h3 span.stop-blinking {
   font-size: 1.6rem;
   font-weight: 500;
   text-transform: capitalize;
-  font:@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 }
 .calendar .month .prev,
 .calendar .month .next {
@@ -154,7 +150,6 @@ h3 span.stop-blinking {
   font-size: 1.5rem;
   font-weight: 500;
   text-transform: capitalize;
-  font:@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 }
 .weekdays div {
   width: 14.28%;
@@ -172,7 +167,6 @@ h3 span.stop-blinking {
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 20px;
-  font:@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 }
 .calendar .days .day {
   width: 14.28%;
@@ -274,7 +268,6 @@ h3 span.stop-blinking {
   border-radius: 5px;
   padding: 0 20px;
   color: var(--primary-clr);
-  border-radius: 5px;
 }
 .calendar .goto-today button {
   padding: 5px 10px;
@@ -296,7 +289,6 @@ h3 span.stop-blinking {
 .container .right {
   position: relative;
   width: 40%;
-  min-height: 100%;
   padding: 20px 0;
 }
 
@@ -467,7 +459,7 @@ h3 span.stop-blinking {
 .add-event-header .title {
   font-size: 2.2rem;
   font-weight: 500;
-  font:@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  font-family: 'Inter', sans-serif;
 }
 
 .add-event-body {
@@ -590,4 +582,3 @@ h3 span.stop-blinking {
     padding: 20px;
   }
 }
-
