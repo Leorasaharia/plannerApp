@@ -53,7 +53,7 @@ body {
 .container {
   position: relative;
   width: 1500px;
-  min-height: 1300px;
+  height: 1200px;
   margin: 0 auto;
   padding: 10px;
   color: #aab6cc;
